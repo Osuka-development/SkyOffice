@@ -16,9 +16,7 @@ export default class Network {
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
     const endpoint =
-      process.env.NODE_ENV === 'production'
-        ? `wss://sky-office.herokuapp.com`
-        : `${protocol}//${window.location.hostname}:2567`
+         `wss://test-server.honbu.cloud`
     this.client = new Client(endpoint)
 
     phaserEvents.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this)

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  skyoffice-server:
+    container_name: skyoffice-server
+    image: skyoffice-server
+    labels:
+      - traefik.http.routers.skyofficeServer.rule=Host(`test-server.honbu.cloud`)
+      - traefik.http.routers.skyofficeServer.tls=true
+      - traefik.http.routers.skyofficeServer.tls.certresolver=lets-encrypt
+      - traefik.port=2567
+    networks:
+      - web
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./src:/app/src
+    expose:
+      - "2567"
+networks:
+  web:
+    external: true
