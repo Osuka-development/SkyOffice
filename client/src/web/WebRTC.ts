@@ -104,6 +104,7 @@ export default class WebRTC {
 
   // method to add new video stream to videoGrid div
   addVideoStream(video: HTMLVideoElement, stream: MediaStream) {
+    video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
       video.play()
     })
