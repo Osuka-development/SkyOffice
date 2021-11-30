@@ -5,7 +5,7 @@ import { useAppSelector } from './hooks'
 import LoginDialog from './components/LoginDialog'
 import ComputerDialog from './components/ComputerDialog'
 import VideoConnectionDialog from './components/VideoConnectionDialog'
-// import Debug from './components/Debug'
+import Debug from './components/Debug'
 
 function App() {
   const loggedIn = useAppSelector((state) => state.user.loggedIn)
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Debug /> */}
+      <Debug />
 
       {/* Render the LoginDialog if not logged in yet. */}
       {!loggedIn && <LoginDialog />}

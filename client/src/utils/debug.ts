@@ -8,5 +8,3 @@ export const debugDraw = (layer: Phaser.Tilemaps.TilemapLayer, scene: Phaser.Sce
     faceColor: new Phaser.Display.Color(40, 39, 37, 255),
   })
 }
-
-// export { debugDraw }

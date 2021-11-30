@@ -1,11 +1,14 @@
 import { Client, Room } from 'colyseus.js'
-import { IComputer, IOfficeState, IPlayer } from '../../../types/IOfficeState'
+import { IComputer, IOfficeState, IPlayer as IPlayerBase } from '../../../types/IOfficeState'
 import { Message } from '../../../types/Messages'
 import WebRTC from '../web/WebRTC'
 import { phaserEvents, Event } from '../events/EventCenter'
 import store from '../stores'
 import { setSessionId, setPlayerNameMap, removePlayerNameMap } from '../stores/UserStore'
 
+interface IPlayer extends IPlayerBase {
+  onChange: any
+}
 export default class Network {
   private client: Client
   private room?: Room<IOfficeState>
@@ -15,8 +18,7 @@ export default class Network {
 
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
-    const endpoint =
-         `wss://test-server.honbu.cloud`
+    const endpoint = `wss://test-server.honbu.cloud`
     this.client = new Client(endpoint)
 
     phaserEvents.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this)
